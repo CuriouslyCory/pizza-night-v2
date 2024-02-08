@@ -5,6 +5,10 @@ generator client {
     provider = "prisma-client-js"
 }
 
+generator zod {
+    provider = "prisma-zod-generator"
+}
+
 datasource db {
     provider = "postgresql"
     // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
@@ -78,32 +82,37 @@ model VerificationToken {
 }
 
 model Pizza {
-    id        String    @id @default(cuid())
+    id          String    @id @default(cuid())
     // Name of the pizza
-    name      String
+    name        String
     // Many-to-many relation with Topping through a helper table
-    toppings  Topping[]
+    toppings    Topping[]
     // Relation to User model to track who created the pizza
-    createdBy String
+    createdById String
     // Link back to User table
-    creator   User      @relation(fields: [createdBy], references: [id])
-    Vote      Vote[]
+    createdBy   User      @relation(fields: [createdById], references: [id])
+    Vote        Vote[]
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
 
     @@map("pizzas")
 }
 
 model Topping {
-    id        String   @id @default(cuid())
+    id          String   @id @default(cuid())
     // Name of the topping
-    name      String
+    name        String
     // Category of the topping (enum for type safety)
-    category  Category
+    category    Category
     // Relation to User model to track who created the topping
-    createdBy String
+    createdById String
     // Link back to User table
-    creator   User     @relation(fields: [createdBy], references: [id])
-    Pizza     Pizza?   @relation(fields: [pizzaId], references: [id])
-    pizzaId   String?
+    createdBy   User     @relation(fields: [createdById], references: [id])
+    // is approved?
+    approved    Boolean  @default(false)
+    Pizza       Pizza[]
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 
     @@map("toppings")
 }
@@ -127,7 +136,7 @@ model Proposal {
     // Creation date and time of the proposal
     createdAt    DateTime @default(now())
     // Duration of the proposal in seconds
-    duration     Int
+    expiresAt    DateTime
     // One-to-many relation with Vote
     votes        Vote[]
     // Who can participate in the proposal

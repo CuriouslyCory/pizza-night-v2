@@ -1,13 +1,12 @@
 import { unstable_noStore as noStore } from "next/cache";
 import Link from "next/link";
+import { CreatePizza } from "~/app/_components/pizza/create-pizza";
 
-import { CreatePizza } from "~/app/_components/create-pizza";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
 
 export default async function Home() {
   noStore();
-  const hello = await api.pizza.hello.query({ text: "from tRPC" });
   const session = await getServerAuthSession();
 
   return (

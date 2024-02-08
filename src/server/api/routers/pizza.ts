@@ -1,3 +1,8 @@
+import { type Pizza } from "@prisma/client";
+import {
+  PizzaCreateInputObjectSchema,
+  PizzaCreateOneSchema,
+} from "prisma/generated/schemas";
 import { z } from "zod";
 
 import {
@@ -16,7 +21,7 @@ export const pizzaRouter = createTRPCRouter({
     }),
 
   create: protectedProcedure
-    .input(z.object({ name: z.string().min(1) }))
+    .input(PizzaCreateInputObjectSchema)
     .mutation(async ({ ctx, input }) => {
       // simulate a slow db call
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -24,6 +29,7 @@ export const pizzaRouter = createTRPCRouter({
       return ctx.db.pizza.create({
         data: {
           name: input.name,
+          toppings: input.toppings,
           createdBy: { connect: { id: ctx.session.user.id } },
         },
       });

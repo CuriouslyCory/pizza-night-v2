@@ -1,28 +1,23 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { api } from "~/trpc/react";
+import AddTopping from "../toppings/add-topping";
+import { ToppingAggregateSchema } from "prisma/generated/schemas";
 
 const NewPizzaSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
   toppings: z
-    .array(z.string())
+    .array(ToppingAggregateSchema)
     .min(1, { message: "At least one topping is required" }),
 });
 
 export function CreatePizza() {
-  const router = useRouter();
-  const [name, setName] = useState("");
-
   const createPizza = api.pizza.create.useMutation({
     onSuccess: () => {
-      router.refresh();
-      setName("");
+      console.log("success submitted pizza");
     },
   });
 
@@ -30,7 +25,7 @@ export function CreatePizza() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<z.infer<typeof NewPizzaSchema>>({
     resolver: zodResolver(NewPizzaSchema),
   });
 
@@ -41,13 +36,7 @@ export function CreatePizza() {
       })}
       className="flex flex-col gap-2"
     >
-      <input
-        type="text"
-        placeholder="Title"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className="w-full rounded-full px-4 py-2 text-black"
-      />
+      <AddTopping />
       <button
         type="submit"
         className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
