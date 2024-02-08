@@ -7,7 +7,7 @@ import { api } from "~/trpc/server";
 
 export default async function Home() {
   noStore();
-  const hello = await api.post.hello.query({ text: "from tRPC" });
+  const hello = await api.pizza.hello.query({ text: "from tRPC" });
   const session = await getServerAuthSession();
 
   return (
@@ -33,7 +33,7 @@ async function CrudShowcase() {
   const session = await getServerAuthSession();
   if (!session?.user) return null;
 
-  const latestPost = await api.post.getLatest.query();
+  const latestPost = await api.pizza.getLatest.query();
 
   return (
     <div className="w-full max-w-xs">
