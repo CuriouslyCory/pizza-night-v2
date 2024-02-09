@@ -1,13 +1,18 @@
-import { z } from 'zod';
-import { SessionScalarWhereInputObjectSchema } from './SessionScalarWhereInput.schema';
-import { SessionUpdateManyMutationInputObjectSchema } from './SessionUpdateManyMutationInput.schema';
-import { SessionUncheckedUpdateManyWithoutSessionsInputObjectSchema } from './SessionUncheckedUpdateManyWithoutSessionsInput.schema'
+import { z } from "zod";
+import { SessionScalarWhereInputObjectSchema } from "./SessionScalarWhereInput.schema";
+import { SessionUpdateManyMutationInputObjectSchema } from "./SessionUpdateManyMutationInput.schema";
+import { SessionUncheckedUpdateManyWithoutSessionsInputObjectSchema } from "./SessionUncheckedUpdateManyWithoutSessionsInput.schema";
 
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from "@prisma/client";
 
-const Schema = z.object({
-  where: z.lazy(() => SessionScalarWhereInputObjectSchema),data: z.union([z.lazy(() => SessionUpdateManyMutationInputObjectSchema),
-z.lazy(() => SessionUncheckedUpdateManyWithoutSessionsInputObjectSchema)])
-}).strict();
+const Schema = z
+  .object({
+    where: z.lazy(() => SessionScalarWhereInputObjectSchema),
+    data: z.union([
+      z.lazy(() => SessionUpdateManyMutationInputObjectSchema),
+      z.lazy(() => SessionUncheckedUpdateManyWithoutSessionsInputObjectSchema),
+    ]),
+  })
+  .strict();
 
- export const SessionUpdateManyWithWhereWithoutUserInputObjectSchema = Schema
+export const SessionUpdateManyWithWhereWithoutUserInputObjectSchema = Schema;

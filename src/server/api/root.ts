@@ -1,6 +1,7 @@
-import { pizzaRouter } from "~/server/api/routers/pizza";
 import { createTRPCRouter } from "~/server/api/trpc";
 import { toppingRouter } from "./routers/topping";
+import { proposalaRouter } from "./routers/proposal";
+import { pizzaRouter } from "./routers/pizza";
 
 /**
  * This is the primary router for your server.
@@ -10,6 +11,7 @@ import { toppingRouter } from "./routers/topping";
 export const appRouter = createTRPCRouter({
   pizza: pizzaRouter,
   topping: toppingRouter,
+  proposal: proposalaRouter,
 });
 
 // export type definition of API

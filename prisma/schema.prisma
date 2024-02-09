@@ -129,10 +129,11 @@ enum Category {
 
 model Proposal {
     id           String   @id @default(cuid())
+    name         String
     // Relation to User model to track who created the proposal
-    createdBy    String
+    createdById  String
     // Link back to User table
-    creator      User     @relation(name: "creator", fields: [createdBy], references: [id])
+    createdBy    User     @relation(name: "creator", fields: [createdById], references: [id])
     // Creation date and time of the proposal
     createdAt    DateTime @default(now())
     // Duration of the proposal in seconds

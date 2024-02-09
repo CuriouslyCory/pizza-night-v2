@@ -1,4 +1,6 @@
-import { z } from 'zod';
-import { PostWhereInputObjectSchema } from './objects/PostWhereInput.schema'
+import { z } from "zod";
+import { PostWhereInputObjectSchema } from "./objects/PostWhereInput.schema";
 
-export const PostDeleteManySchema = z.object({ where: PostWhereInputObjectSchema.optional()  })
+export const PostDeleteManySchema = z.object({
+  where: PostWhereInputObjectSchema.optional(),
+});

@@ -1,10 +1,12 @@
-import { z } from 'zod';
+import { z } from "zod";
 
+import type { Prisma } from "@prisma/client";
 
-import type { Prisma } from '@prisma/client';
+const Schema = z
+  .object({
+    id: z.string().optional(),
+    email: z.string().optional(),
+  })
+  .strict();
 
-const Schema = z.object({
-  id: z.string().optional(),email: z.string().optional()
-}).strict();
-
- export const UserWhereUniqueInputObjectSchema = Schema
+export const UserWhereUniqueInputObjectSchema = Schema;

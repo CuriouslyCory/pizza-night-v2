@@ -1,10 +1,12 @@
-import { z } from 'zod';
-import { CategorySchema } from '../enums/Category.schema'
+import { z } from "zod";
+import { CategorySchema } from "../enums/Category.schema";
 
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from "@prisma/client";
 
-const Schema = z.object({
-  set: z.lazy(() => CategorySchema).optional()
-}).strict();
+const Schema = z
+  .object({
+    set: z.lazy(() => CategorySchema).optional(),
+  })
+  .strict();
 
- export const EnumCategoryFieldUpdateOperationsInputObjectSchema = Schema
+export const EnumCategoryFieldUpdateOperationsInputObjectSchema = Schema;

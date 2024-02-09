@@ -1,10 +1,11 @@
-import { z } from 'zod';
+import { z } from "zod";
 
+import type { Prisma } from "@prisma/client";
 
-import type { Prisma } from '@prisma/client';
+const Schema = z
+  .object({
+    set: z.coerce.date().optional(),
+  })
+  .strict();
 
-const Schema = z.object({
-  set: z.coerce.date().optional()
-}).strict();
-
- export const DateTimeFieldUpdateOperationsInputObjectSchema = Schema
+export const DateTimeFieldUpdateOperationsInputObjectSchema = Schema;

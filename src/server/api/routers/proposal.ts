@@ -1,18 +1,14 @@
-import { PizzaCreateInputObjectSchema } from "prisma/generated/schemas";
-
+import { ProposalCreateInputObjectSchema } from "prisma/generated/schemas";
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 
-export const pizzaRouter = createTRPCRouter({
+export const proposalaRouter = createTRPCRouter({
   create: protectedProcedure
-    .input(PizzaCreateInputObjectSchema)
+    .input(ProposalCreateInputObjectSchema)
     .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      return ctx.db.pizza.create({
+      return ctx.db.proposal.create({
         data: {
           name: input.name,
-          toppings: input.toppings,
+          expiresAt: input.expiresAt,
           createdBy: { connect: { id: ctx.session.user.id } },
         },
       });

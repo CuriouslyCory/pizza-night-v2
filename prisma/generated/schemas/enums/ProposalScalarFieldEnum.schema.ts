@@ -1,3 +1,9 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-export const ProposalScalarFieldEnumSchema = z.enum(["id","createdBy","createdAt","expiresAt"])
+export const ProposalScalarFieldEnumSchema = z.enum([
+  "id",
+  "name",
+  "createdById",
+  "createdAt",
+  "expiresAt",
+]);

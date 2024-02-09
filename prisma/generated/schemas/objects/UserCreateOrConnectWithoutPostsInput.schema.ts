@@ -1,13 +1,18 @@
-import { z } from 'zod';
-import { UserWhereUniqueInputObjectSchema } from './UserWhereUniqueInput.schema';
-import { UserCreateWithoutPostsInputObjectSchema } from './UserCreateWithoutPostsInput.schema';
-import { UserUncheckedCreateWithoutPostsInputObjectSchema } from './UserUncheckedCreateWithoutPostsInput.schema'
+import { z } from "zod";
+import { UserWhereUniqueInputObjectSchema } from "./UserWhereUniqueInput.schema";
+import { UserCreateWithoutPostsInputObjectSchema } from "./UserCreateWithoutPostsInput.schema";
+import { UserUncheckedCreateWithoutPostsInputObjectSchema } from "./UserUncheckedCreateWithoutPostsInput.schema";
 
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from "@prisma/client";
 
-const Schema = z.object({
-  where: z.lazy(() => UserWhereUniqueInputObjectSchema),create: z.union([z.lazy(() => UserCreateWithoutPostsInputObjectSchema),
-z.lazy(() => UserUncheckedCreateWithoutPostsInputObjectSchema)])
-}).strict();
+const Schema = z
+  .object({
+    where: z.lazy(() => UserWhereUniqueInputObjectSchema),
+    create: z.union([
+      z.lazy(() => UserCreateWithoutPostsInputObjectSchema),
+      z.lazy(() => UserUncheckedCreateWithoutPostsInputObjectSchema),
+    ]),
+  })
+  .strict();
 
- export const UserCreateOrConnectWithoutPostsInputObjectSchema = Schema
+export const UserCreateOrConnectWithoutPostsInputObjectSchema = Schema;

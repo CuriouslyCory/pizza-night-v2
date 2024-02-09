@@ -1,10 +1,13 @@
-import { z } from 'zod';
+import { z } from "zod";
 
+import type { Prisma } from "@prisma/client";
 
-import type { Prisma } from '@prisma/client';
+const Schema = z
+  .object({
+    provider: z.string(),
+    providerAccountId: z.string(),
+  })
+  .strict();
 
-const Schema = z.object({
-  provider: z.string(),providerAccountId: z.string()
-}).strict();
-
- export const AccountProviderProviderAccountIdCompoundUniqueInputObjectSchema = Schema
+export const AccountProviderProviderAccountIdCompoundUniqueInputObjectSchema =
+  Schema;

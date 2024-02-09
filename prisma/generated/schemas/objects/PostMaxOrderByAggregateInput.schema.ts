@@ -1,10 +1,16 @@
-import { z } from 'zod';
-import { SortOrderSchema } from '../enums/SortOrder.schema'
+import { z } from "zod";
+import { SortOrderSchema } from "../enums/SortOrder.schema";
 
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from "@prisma/client";
 
-const Schema = z.object({
-  id: z.lazy(() => SortOrderSchema).optional(),name: z.lazy(() => SortOrderSchema).optional(),createdAt: z.lazy(() => SortOrderSchema).optional(),updatedAt: z.lazy(() => SortOrderSchema).optional(),createdById: z.lazy(() => SortOrderSchema).optional()
-}).strict();
+const Schema = z
+  .object({
+    id: z.lazy(() => SortOrderSchema).optional(),
+    name: z.lazy(() => SortOrderSchema).optional(),
+    createdAt: z.lazy(() => SortOrderSchema).optional(),
+    updatedAt: z.lazy(() => SortOrderSchema).optional(),
+    createdById: z.lazy(() => SortOrderSchema).optional(),
+  })
+  .strict();
 
- export const PostMaxOrderByAggregateInputObjectSchema = Schema
+export const PostMaxOrderByAggregateInputObjectSchema = Schema;

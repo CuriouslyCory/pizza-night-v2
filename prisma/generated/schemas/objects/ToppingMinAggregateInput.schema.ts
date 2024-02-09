@@ -1,10 +1,17 @@
-import { z } from 'zod';
+import { z } from "zod";
 
+import type { Prisma } from "@prisma/client";
 
-import type { Prisma } from '@prisma/client';
+const Schema = z
+  .object({
+    id: z.literal(true).optional(),
+    name: z.literal(true).optional(),
+    category: z.literal(true).optional(),
+    createdById: z.literal(true).optional(),
+    approved: z.literal(true).optional(),
+    createdAt: z.literal(true).optional(),
+    updatedAt: z.literal(true).optional(),
+  })
+  .strict();
 
-const Schema = z.object({
-  id: z.literal(true).optional(),name: z.literal(true).optional(),category: z.literal(true).optional(),createdById: z.literal(true).optional(),approved: z.literal(true).optional(),createdAt: z.literal(true).optional(),updatedAt: z.literal(true).optional()
-}).strict();
-
- export const ToppingMinAggregateInputObjectSchema = Schema
+export const ToppingMinAggregateInputObjectSchema = Schema;

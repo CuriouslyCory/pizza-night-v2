@@ -1,10 +1,15 @@
-import { z } from 'zod';
-import { UserCreateNestedOneWithoutSessionsInputObjectSchema } from './UserCreateNestedOneWithoutSessionsInput.schema'
+import { z } from "zod";
+import { UserCreateNestedOneWithoutSessionsInputObjectSchema } from "./UserCreateNestedOneWithoutSessionsInput.schema";
 
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from "@prisma/client";
 
-const Schema = z.object({
-  id: z.string().optional(),sessionToken: z.string(),expires: z.coerce.date(),user: z.lazy(() => UserCreateNestedOneWithoutSessionsInputObjectSchema)
-}).strict();
+const Schema = z
+  .object({
+    id: z.string().optional(),
+    sessionToken: z.string(),
+    expires: z.coerce.date(),
+    user: z.lazy(() => UserCreateNestedOneWithoutSessionsInputObjectSchema),
+  })
+  .strict();
 
- export const SessionCreateInputObjectSchema = Schema
+export const SessionCreateInputObjectSchema = Schema;

@@ -1,10 +1,13 @@
-import { z } from 'zod';
+import { z } from "zod";
 
+import type { Prisma } from "@prisma/client";
 
-import type { Prisma } from '@prisma/client';
+const Schema = z
+  .object({
+    id: z.string().optional(),
+    userId: z.string(),
+    proposalId: z.string(),
+  })
+  .strict();
 
-const Schema = z.object({
-  id: z.string().optional(),userId: z.string(),proposalId: z.string()
-}).strict();
-
- export const VoteUncheckedCreateWithoutPizzaInputObjectSchema = Schema
+export const VoteUncheckedCreateWithoutPizzaInputObjectSchema = Schema;

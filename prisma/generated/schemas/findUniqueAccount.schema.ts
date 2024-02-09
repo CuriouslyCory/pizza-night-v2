@@ -1,4 +1,6 @@
-import { z } from 'zod';
-import { AccountWhereUniqueInputObjectSchema } from './objects/AccountWhereUniqueInput.schema'
+import { z } from "zod";
+import { AccountWhereUniqueInputObjectSchema } from "./objects/AccountWhereUniqueInput.schema";
 
-export const AccountFindUniqueSchema = z.object({   where: AccountWhereUniqueInputObjectSchema })
+export const AccountFindUniqueSchema = z.object({
+  where: AccountWhereUniqueInputObjectSchema,
+});

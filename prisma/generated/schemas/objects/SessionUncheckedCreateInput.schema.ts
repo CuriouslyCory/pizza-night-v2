@@ -1,10 +1,14 @@
-import { z } from 'zod';
+import { z } from "zod";
 
+import type { Prisma } from "@prisma/client";
 
-import type { Prisma } from '@prisma/client';
+const Schema = z
+  .object({
+    id: z.string().optional(),
+    sessionToken: z.string(),
+    userId: z.string(),
+    expires: z.coerce.date(),
+  })
+  .strict();
 
-const Schema = z.object({
-  id: z.string().optional(),sessionToken: z.string(),userId: z.string(),expires: z.coerce.date()
-}).strict();
-
- export const SessionUncheckedCreateInputObjectSchema = Schema
+export const SessionUncheckedCreateInputObjectSchema = Schema;

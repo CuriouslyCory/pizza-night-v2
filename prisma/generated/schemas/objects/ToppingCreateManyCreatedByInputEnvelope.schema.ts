@@ -1,11 +1,16 @@
-import { z } from 'zod';
-import { ToppingCreateManyCreatedByInputObjectSchema } from './ToppingCreateManyCreatedByInput.schema'
+import { z } from "zod";
+import { ToppingCreateManyCreatedByInputObjectSchema } from "./ToppingCreateManyCreatedByInput.schema";
 
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from "@prisma/client";
 
-const Schema = z.object({
-  data: z.union([z.lazy(() => ToppingCreateManyCreatedByInputObjectSchema),
-z.lazy(() => ToppingCreateManyCreatedByInputObjectSchema).array()]),skipDuplicates: z.boolean().optional()
-}).strict();
+const Schema = z
+  .object({
+    data: z.union([
+      z.lazy(() => ToppingCreateManyCreatedByInputObjectSchema),
+      z.lazy(() => ToppingCreateManyCreatedByInputObjectSchema).array(),
+    ]),
+    skipDuplicates: z.boolean().optional(),
+  })
+  .strict();
 
- export const ToppingCreateManyCreatedByInputEnvelopeObjectSchema = Schema
+export const ToppingCreateManyCreatedByInputEnvelopeObjectSchema = Schema;

@@ -1,13 +1,21 @@
-import { z } from 'zod';
-import { NestedDateTimeFilterObjectSchema } from './NestedDateTimeFilter.schema'
+import { z } from "zod";
+import { NestedDateTimeFilterObjectSchema } from "./NestedDateTimeFilter.schema";
 
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from "@prisma/client";
 
-const Schema = z.object({
-  equals: z.coerce.date().optional(),in: z.union([z.coerce.date().array(),
-z.coerce.date()]).optional(),notIn: z.union([z.coerce.date().array(),
-z.coerce.date()]).optional(),lt: z.coerce.date().optional(),lte: z.coerce.date().optional(),gt: z.coerce.date().optional(),gte: z.coerce.date().optional(),not: z.union([z.coerce.date(),
-z.lazy(() => NestedDateTimeFilterObjectSchema)]).optional()
-}).strict();
+const Schema = z
+  .object({
+    equals: z.coerce.date().optional(),
+    in: z.union([z.coerce.date().array(), z.coerce.date()]).optional(),
+    notIn: z.union([z.coerce.date().array(), z.coerce.date()]).optional(),
+    lt: z.coerce.date().optional(),
+    lte: z.coerce.date().optional(),
+    gt: z.coerce.date().optional(),
+    gte: z.coerce.date().optional(),
+    not: z
+      .union([z.coerce.date(), z.lazy(() => NestedDateTimeFilterObjectSchema)])
+      .optional(),
+  })
+  .strict();
 
- export const DateTimeFilterObjectSchema = Schema
+export const DateTimeFilterObjectSchema = Schema;

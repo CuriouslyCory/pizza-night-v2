@@ -1,11 +1,17 @@
-import { z } from 'zod';
-import { StringFieldUpdateOperationsInputObjectSchema } from './StringFieldUpdateOperationsInput.schema'
+import { z } from "zod";
+import { StringFieldUpdateOperationsInputObjectSchema } from "./StringFieldUpdateOperationsInput.schema";
 
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from "@prisma/client";
 
-const Schema = z.object({
-  id: z.union([z.string(),
-z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional()
-}).strict();
+const Schema = z
+  .object({
+    id: z
+      .union([
+        z.string(),
+        z.lazy(() => StringFieldUpdateOperationsInputObjectSchema),
+      ])
+      .optional(),
+  })
+  .strict();
 
- export const VoteUpdateManyMutationInputObjectSchema = Schema
+export const VoteUpdateManyMutationInputObjectSchema = Schema;
