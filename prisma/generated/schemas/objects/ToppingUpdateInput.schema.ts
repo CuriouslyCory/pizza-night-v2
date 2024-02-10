@@ -1,59 +1,22 @@
-import { z } from "zod";
-import { StringFieldUpdateOperationsInputObjectSchema } from "./StringFieldUpdateOperationsInput.schema";
-import { CategorySchema } from "../enums/Category.schema";
-import { EnumCategoryFieldUpdateOperationsInputObjectSchema } from "./EnumCategoryFieldUpdateOperationsInput.schema";
-import { BoolFieldUpdateOperationsInputObjectSchema } from "./BoolFieldUpdateOperationsInput.schema";
-import { DateTimeFieldUpdateOperationsInputObjectSchema } from "./DateTimeFieldUpdateOperationsInput.schema";
-import { UserUpdateOneRequiredWithoutToppingNestedInputObjectSchema } from "./UserUpdateOneRequiredWithoutToppingNestedInput.schema";
-import { PizzaUpdateManyWithoutToppingsNestedInputObjectSchema } from "./PizzaUpdateManyWithoutToppingsNestedInput.schema";
+import { z } from 'zod';
+import { StringFieldUpdateOperationsInputObjectSchema } from './StringFieldUpdateOperationsInput.schema';
+import { CategorySchema } from '../enums/Category.schema';
+import { EnumCategoryFieldUpdateOperationsInputObjectSchema } from './EnumCategoryFieldUpdateOperationsInput.schema';
+import { BoolFieldUpdateOperationsInputObjectSchema } from './BoolFieldUpdateOperationsInput.schema';
+import { DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema';
+import { UserUpdateOneRequiredWithoutToppingNestedInputObjectSchema } from './UserUpdateOneRequiredWithoutToppingNestedInput.schema';
+import { PizzaUpdateManyWithoutToppingsNestedInputObjectSchema } from './PizzaUpdateManyWithoutToppingsNestedInput.schema'
 
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from '@prisma/client';
 
-const Schema = z
-  .object({
-    id: z
-      .union([
-        z.string(),
-        z.lazy(() => StringFieldUpdateOperationsInputObjectSchema),
-      ])
-      .optional(),
-    name: z
-      .union([
-        z.string(),
-        z.lazy(() => StringFieldUpdateOperationsInputObjectSchema),
-      ])
-      .optional(),
-    category: z
-      .union([
-        z.lazy(() => CategorySchema),
-        z.lazy(() => EnumCategoryFieldUpdateOperationsInputObjectSchema),
-      ])
-      .optional(),
-    approved: z
-      .union([
-        z.boolean(),
-        z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema),
-      ])
-      .optional(),
-    createdAt: z
-      .union([
-        z.coerce.date(),
-        z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema),
-      ])
-      .optional(),
-    updatedAt: z
-      .union([
-        z.coerce.date(),
-        z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema),
-      ])
-      .optional(),
-    createdBy: z
-      .lazy(() => UserUpdateOneRequiredWithoutToppingNestedInputObjectSchema)
-      .optional(),
-    Pizza: z
-      .lazy(() => PizzaUpdateManyWithoutToppingsNestedInputObjectSchema)
-      .optional(),
-  })
-  .strict();
+const Schema = z.object({
+  id: z.union([z.string(),
+z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),name: z.union([z.string(),
+z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),category: z.union([z.lazy(() => CategorySchema),
+z.lazy(() => EnumCategoryFieldUpdateOperationsInputObjectSchema)]).optional(),approved: z.union([z.boolean(),
+z.lazy(() => BoolFieldUpdateOperationsInputObjectSchema)]).optional(),createdAt: z.union([z.coerce.date(),
+z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),updatedAt: z.union([z.coerce.date(),
+z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),createdBy: z.lazy(() => UserUpdateOneRequiredWithoutToppingNestedInputObjectSchema).optional(),Pizza: z.lazy(() => PizzaUpdateManyWithoutToppingsNestedInputObjectSchema).optional()
+}).strict();
 
-export const ToppingUpdateInputObjectSchema = Schema;
+ export const ToppingUpdateInputObjectSchema = Schema

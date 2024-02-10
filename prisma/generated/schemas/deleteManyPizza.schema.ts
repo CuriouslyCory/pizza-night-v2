@@ -1,6 +1,4 @@
-import { z } from "zod";
-import { PizzaWhereInputObjectSchema } from "./objects/PizzaWhereInput.schema";
+import { z } from 'zod';
+import { PizzaWhereInputObjectSchema } from './objects/PizzaWhereInput.schema'
 
-export const PizzaDeleteManySchema = z.object({
-  where: PizzaWhereInputObjectSchema.optional(),
-});
+export const PizzaDeleteManySchema = z.object({ where: PizzaWhereInputObjectSchema.optional()  })

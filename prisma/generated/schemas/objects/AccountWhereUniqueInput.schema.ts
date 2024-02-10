@@ -1,17 +1,10 @@
-import { z } from "zod";
-import { AccountProviderProviderAccountIdCompoundUniqueInputObjectSchema } from "./AccountProviderProviderAccountIdCompoundUniqueInput.schema";
+import { z } from 'zod';
+import { AccountProviderProviderAccountIdCompoundUniqueInputObjectSchema } from './AccountProviderProviderAccountIdCompoundUniqueInput.schema'
 
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from '@prisma/client';
 
-const Schema = z
-  .object({
-    id: z.string().optional(),
-    provider_providerAccountId: z
-      .lazy(
-        () => AccountProviderProviderAccountIdCompoundUniqueInputObjectSchema,
-      )
-      .optional(),
-  })
-  .strict();
+const Schema = z.object({
+  id: z.string().optional(),provider_providerAccountId: z.lazy(() => AccountProviderProviderAccountIdCompoundUniqueInputObjectSchema).optional()
+}).strict();
 
-export const AccountWhereUniqueInputObjectSchema = Schema;
+ export const AccountWhereUniqueInputObjectSchema = Schema

@@ -122,9 +122,11 @@ enum Category {
     sauce
     cheese
     vegetable
+    fruit
     meat
     grain
     finishingSauce
+    other
 }
 
 model Proposal {

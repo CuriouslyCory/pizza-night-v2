@@ -1,16 +1,11 @@
-import { z } from "zod";
-import { PizzaCreateManyCreatedByInputObjectSchema } from "./PizzaCreateManyCreatedByInput.schema";
+import { z } from 'zod';
+import { PizzaCreateManyCreatedByInputObjectSchema } from './PizzaCreateManyCreatedByInput.schema'
 
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from '@prisma/client';
 
-const Schema = z
-  .object({
-    data: z.union([
-      z.lazy(() => PizzaCreateManyCreatedByInputObjectSchema),
-      z.lazy(() => PizzaCreateManyCreatedByInputObjectSchema).array(),
-    ]),
-    skipDuplicates: z.boolean().optional(),
-  })
-  .strict();
+const Schema = z.object({
+  data: z.union([z.lazy(() => PizzaCreateManyCreatedByInputObjectSchema),
+z.lazy(() => PizzaCreateManyCreatedByInputObjectSchema).array()]),skipDuplicates: z.boolean().optional()
+}).strict();
 
-export const PizzaCreateManyCreatedByInputEnvelopeObjectSchema = Schema;
+ export const PizzaCreateManyCreatedByInputEnvelopeObjectSchema = Schema

@@ -1,11 +1,10 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-import type { Prisma } from "@prisma/client";
 
-const Schema = z
-  .object({
-    id: z.number().optional(),
-  })
-  .strict();
+import type { Prisma } from '@prisma/client';
 
-export const PostWhereUniqueInputObjectSchema = Schema;
+const Schema = z.object({
+  id: z.number().optional()
+}).strict();
+
+ export const PostWhereUniqueInputObjectSchema = Schema

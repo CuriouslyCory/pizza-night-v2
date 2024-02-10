@@ -1,25 +1,13 @@
-import { z } from "zod";
-import { StringFieldUpdateOperationsInputObjectSchema } from "./StringFieldUpdateOperationsInput.schema";
-import { UserUpdateOneRequiredWithoutVoteNestedInputObjectSchema } from "./UserUpdateOneRequiredWithoutVoteNestedInput.schema";
-import { ProposalUpdateOneRequiredWithoutVotesNestedInputObjectSchema } from "./ProposalUpdateOneRequiredWithoutVotesNestedInput.schema";
+import { z } from 'zod';
+import { StringFieldUpdateOperationsInputObjectSchema } from './StringFieldUpdateOperationsInput.schema';
+import { UserUpdateOneRequiredWithoutVoteNestedInputObjectSchema } from './UserUpdateOneRequiredWithoutVoteNestedInput.schema';
+import { ProposalUpdateOneRequiredWithoutVotesNestedInputObjectSchema } from './ProposalUpdateOneRequiredWithoutVotesNestedInput.schema'
 
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from '@prisma/client';
 
-const Schema = z
-  .object({
-    id: z
-      .union([
-        z.string(),
-        z.lazy(() => StringFieldUpdateOperationsInputObjectSchema),
-      ])
-      .optional(),
-    user: z
-      .lazy(() => UserUpdateOneRequiredWithoutVoteNestedInputObjectSchema)
-      .optional(),
-    proposal: z
-      .lazy(() => ProposalUpdateOneRequiredWithoutVotesNestedInputObjectSchema)
-      .optional(),
-  })
-  .strict();
+const Schema = z.object({
+  id: z.union([z.string(),
+z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),user: z.lazy(() => UserUpdateOneRequiredWithoutVoteNestedInputObjectSchema).optional(),proposal: z.lazy(() => ProposalUpdateOneRequiredWithoutVotesNestedInputObjectSchema).optional()
+}).strict();
 
-export const VoteUpdateWithoutPizzaInputObjectSchema = Schema;
+ export const VoteUpdateWithoutPizzaInputObjectSchema = Schema

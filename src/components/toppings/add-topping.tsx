@@ -10,7 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { CategorySchema } from "prisma/generated/schemas";
 import { api } from "~/utils/api";
 import {
   Form,
@@ -24,22 +23,32 @@ import {
 import { useToast } from "../ui/use-toast";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { $Enums } from "@prisma/client";
 
 const schema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
-  category: CategorySchema,
+  category: z.string().min(1, { message: "Category is required" }),
 });
 
-const AddTopping = () => {
+type AddToppingProps = {
+  defaultName?: string;
+  onSuccess?: () => void;
+};
+
+export const AddTopping = ({ defaultName, onSuccess }: AddToppingProps) => {
   const { toast } = useToast();
+  const utils = api.useUtils();
   const createTopping = api.topping.create.useMutation({
-    onSuccess: () => {
+    onSuccess: async () => {
       console.log("success");
+      await utils.topping.invalidate();
+      onSuccess?.();
     },
   });
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
+    defaultValues: { name: defaultName ?? "", category: "" },
   });
 
   function onSubmit(data: z.infer<typeof schema>) {
@@ -85,7 +94,7 @@ const AddTopping = () => {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {CategorySchema.options.map((category) => (
+                  {Object.values($Enums.Category).map((category) => (
                     <SelectItem key={`key-${category}`} value={category}>
                       {category}
                     </SelectItem>

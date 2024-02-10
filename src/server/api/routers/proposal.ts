@@ -1,9 +1,9 @@
-import { ProposalCreateInputObjectSchema } from "prisma/generated/schemas";
+import { z } from "zod";
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 
 export const proposalaRouter = createTRPCRouter({
   create: protectedProcedure
-    .input(ProposalCreateInputObjectSchema)
+    .input(z.object({ name: z.string(), expiresAt: z.date() }))
     .mutation(async ({ ctx, input }) => {
       return ctx.db.proposal.create({
         data: {

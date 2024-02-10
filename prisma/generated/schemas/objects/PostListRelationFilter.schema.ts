@@ -1,14 +1,10 @@
-import { z } from "zod";
-import { PostWhereInputObjectSchema } from "./PostWhereInput.schema";
+import { z } from 'zod';
+import { PostWhereInputObjectSchema } from './PostWhereInput.schema'
 
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from '@prisma/client';
 
-const Schema = z
-  .object({
-    every: z.lazy(() => PostWhereInputObjectSchema).optional(),
-    some: z.lazy(() => PostWhereInputObjectSchema).optional(),
-    none: z.lazy(() => PostWhereInputObjectSchema).optional(),
-  })
-  .strict();
+const Schema = z.object({
+  every: z.lazy(() => PostWhereInputObjectSchema).optional(),some: z.lazy(() => PostWhereInputObjectSchema).optional(),none: z.lazy(() => PostWhereInputObjectSchema).optional()
+}).strict();
 
-export const PostListRelationFilterObjectSchema = Schema;
+ export const PostListRelationFilterObjectSchema = Schema

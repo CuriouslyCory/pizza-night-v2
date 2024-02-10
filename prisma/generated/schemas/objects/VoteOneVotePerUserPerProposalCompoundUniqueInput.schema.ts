@@ -1,13 +1,10 @@
-import { z } from "zod";
+import { z } from 'zod';
 
-import type { Prisma } from "@prisma/client";
 
-const Schema = z
-  .object({
-    userId: z.string(),
-    proposalId: z.string(),
-  })
-  .strict();
+import type { Prisma } from '@prisma/client';
 
-export const VoteOneVotePerUserPerProposalCompoundUniqueInputObjectSchema =
-  Schema;
+const Schema = z.object({
+  userId: z.string(),proposalId: z.string()
+}).strict();
+
+ export const VoteOneVotePerUserPerProposalCompoundUniqueInputObjectSchema = Schema

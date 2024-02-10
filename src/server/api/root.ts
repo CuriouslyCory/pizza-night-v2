@@ -1,7 +1,7 @@
 import { createTRPCRouter } from "~/server/api/trpc";
+import { pizzaRouter } from "./routers/pizza";
 import { toppingRouter } from "./routers/topping";
 import { proposalaRouter } from "./routers/proposal";
-import { pizzaRouter } from "./routers/pizza";
 
 /**
  * This is the primary router for your server.
